@@ -8,6 +8,7 @@ import React from "react";
 import { useSession } from 'next-auth/react';
 import Sidebar from "@/components/Sidebar";
 
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -24,9 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 const SessionBasedLayout = ({ children }: { children: React.ReactNode }) => {
   const { status } = useSession();
 
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
+  // if (status === "loading") {
+  //   return <div>Loading...</div>;
+  // }
 
   return status === "authenticated" ? (
     // Layout for authenticated users

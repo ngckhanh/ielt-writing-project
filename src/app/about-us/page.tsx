@@ -1,8 +1,8 @@
-export default function PaymentPage() {
+export default function AboutUsPage() {
     return (
         <div className="flex items-center justify-center h-screen">
             <div className="max-w-2xl w-full p-8 bg-white rounded-2xl shadow-xl text-center">
-                <h1 className="text-4xl font-extrabold text-gray-800 mb-6">Payment Page</h1>
+                <h1 className="text-4xl font-extrabold text-gray-800 mb-6">About Us</h1>
                 <p className="text-lg text-gray-600 mb-6">
                     Sẽ được cập nhật sau. Please check back later!
                 </p>

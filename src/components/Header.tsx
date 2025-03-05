@@ -31,7 +31,7 @@ export default function Header() {
           <a href="/about-us" className="text-gray-600 hover:text-blue-500">
             Về chúng mình
           </a>
-          <a href="/collaboration" className="text-gray-600 hover:text-blue-500">
+          <a href="/collaborate" className="text-gray-600 hover:text-blue-500">
             Hợp tác
           </a>
 
