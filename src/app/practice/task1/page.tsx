@@ -72,7 +72,7 @@ export default function Task1PracticePage() {
         <div className="flex-1 mt-3 md:mt-0">
           <select
             value={selectedTopic}
-            //onChange={handleTopicChange}
+            onChange={handleTopicChange}
             className="h-full w-full p-3 border rounded-lg shadow-sm"
           >
             <option value="">All Topics</option>

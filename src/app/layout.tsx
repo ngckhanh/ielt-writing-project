@@ -17,7 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SessionProvider>
           <SessionBasedLayout>{children}</SessionBasedLayout>
         </SessionProvider>
-          
         {/* </NextAuthProvider> */}
       </body>
     </html>
@@ -28,9 +27,9 @@ const SessionBasedLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: session, status } = useSession();
 
   // Optimize status handling
-  // if (status === "loading") {
-  //   return <LoadingScreen />;
-  // }
+  if (status === "loading") {
+    return <LoadingScreen />;
+  }
 
   return session ? (
     <AuthenticatedLayout>{children}</AuthenticatedLayout>
