@@ -24,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 const SessionBasedLayout = ({ children }: { children: React.ReactNode }) => {
   const { status } = useSession();
+  console.log(status);
 
   // if (status === "loading") {
   //   return <div>Loading...</div>;
