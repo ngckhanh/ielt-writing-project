@@ -2,7 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
-import { db } from "@/lib/db"; // Assuming you have a configured database client (e.g., Supabase)
+import { db } from "@/lib/db"; 
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -23,41 +23,41 @@ export const authOptions: NextAuthOptions = {
     }),
 
     // Credentials Provider for email/password login
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        email: { label: "Email", type: "text", placeholder: "john@gmail.com" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          throw new Error("Missing email or password");
-        }
+    // CredentialsProvider({
+    //   name: "Credentials",
+    //   credentials: {
+    //     email: { label: "Email", type: "text", placeholder: "john@gmail.com" },
+    //     password: { label: "Password", type: "password" },
+    //   },
+    //   async authorize(credentials) {
+    //     if (!credentials?.email || !credentials?.password) {
+    //       throw new Error("Missing email or password");
+    //     }
 
-        // Query your database for the user
-        const user = await db.user.findUnique({
-          where: { email: credentials.email },
-        });
+    //     // Query your database for the user
+    //     const user = await db.user.findUnique({
+    //       where: { email: credentials.email },
+    //     });
 
-        if (!user) {
-          throw new Error("No user found with this email");
-        }
+    //     if (!user) {
+    //       throw new Error("No user found with this email");
+    //     }
 
-        // Compare the hashed password
-        const isPasswordValid = await compare(credentials.password, user.password);
-        if (!isPasswordValid) {
-          throw new Error("Incorrect password");
-        }
+    //     // Compare the hashed password
+    //     const isPasswordValid = await compare(credentials.password, user.password);
+    //     if (!isPasswordValid) {
+    //       throw new Error("Incorrect password");
+    //     }
 
-        // Return user object to attach to the session token
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: user.role, // Include additional fields if needed
-        };
-      },
-    }),
+    //     // Return user object to attach to the session token
+    //     return {
+    //       id: user.id,
+    //       name: user.name,
+    //       email: user.email,
+    //       role: user.role, // Include additional fields if needed
+    //     };
+    //   },
+    // }),
   ],
   callbacks: {
     async jwt({ token, user }) {
@@ -66,17 +66,17 @@ export const authOptions: NextAuthOptions = {
         token.id = user.id;
         token.email = user.email;
         token.name = user.name;
-        token.role = user.role; // Example: Include role in the token
+        //token.role = user.role; // Example: Include role in the token
       }
       return token;
     },
     async session({ session, token }) {
       // Attach JWT token data to the session object
       session.user = {
-        id: token.id,
+        //id: token.id,
         email: token.email,
         name: token.name,
-        role: token.role, // Example: Include role in the session
+        //role: token.role, // Example: Include role in the session
       };
       return session;
     },

@@ -6,7 +6,7 @@ import { VscPreview } from "react-icons/vsc";
 export default async function HomePage() {
   const session = await getServerSession(authOptions);
   //console.log(session); 
-  
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-center py-12">
       {session ? (
@@ -22,79 +22,94 @@ export default async function HomePage() {
 
 const AuthenticatedContent = () => (
   <>
-   <div className="flex flex-col items-center justify-center min-h-screen text-center py-12 ">
-            {/* Heading */}
-            <h1 className="text-4xl font-bold text-black mb-4">
-                Tự Ôn Luyện IELTS Writing
-            </h1>
+    <div className="flex flex-col items-center justify-center min-h-screen text-center py-12 ">
+      {/* Heading */}
+      <h1 className="text-4xl font-bold text-black mb-4">
+        Tự Ôn Luyện IELTS Writing
+      </h1>
 
-            <p className="text-gray-600 mb-4">
-                Bạch Dương App giúp bạn biết được trình độ của mình và giúp bạn cải thiện.
-            </p>
+      <p className="text-gray-600 mb-4">
+        Bạch Dương App giúp bạn biết được trình độ của mình và giúp bạn cải thiện.
+      </p>
 
-            {/* Divider */}
-            <div className="relative my-6 w-full max-w-xl">
-                <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300"></div>
-                </div>
-                <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-gray-50 text-gray-500">Các tính năng</span>
-                </div>
-            </div>
-
-            {/* Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-3xl">
-                {/* Feature 1 */}
-                <div className="border border-gray-400 rounded-lg p-6 bg-white">
-                    <div className="flex items-center space-x-3 mb-4">
-                        <VscPreview className="text-2xl text-blue-600" />
-                        <span className="text-lg font-semibold">Ôn Luyện</span>
-                    </div>
-                    <p className="text-gray-600 mb-4">
-                        Tự trả lời các topic tự chọn. Nhận sửa lỗi và đánh giá lập tức.
-                    </p>
-                    <div className="flex justify-center space-x-4">
-                        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                            Task 1
-                        </button>
-                        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                            Task 2
-                        </button>
-                        <button className="bg-white border-1 border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 hover:text-white">
-                            Tự thêm topic
-                        </button>
-                    </div>
-                </div>
-
-                {/* Feature 2 */}
-                <div className="border border-gray-400 rounded-lg p-6 bg-white">
-                    <div className="flex items-center space-x-3 mb-4">
-                        <TbWriting className="text-2xl text-blue-600" />
-                        <span className="text-lg font-semibold">Thi thử</span>
-                    </div>
-                    <p className="text-gray-600 mb-4">
-                        Trả lời một bộ câu hỏi ngẫu nhiên. Cấu trúc giống bài thi thật.
-                    </p>
-                    <div className="flex justify-center space-x-4">
-                        <button className="border-1 border-pink-600 text-pink-600 px-4 py-2 rounded-lg hover:bg-pink-600 hover:text-white">
-                            Task 1
-                        </button>
-                        <button className="border-1 border-pink-600 text-pink-600 px-4 py-2 rounded-lg hover:bg-pink-600 hover:text-white">
-                            Task 2
-                        </button>
-                        <button className="border-1 border-pink-600 text-pink-600 px-4 py-2 rounded-lg hover:bg-pink-600 hover:text-white">
-                            Full test
-                        </button>
-                    </div>
-                </div>
-            </div>
+      {/* Divider */}
+      <div className="relative my-6 w-full max-w-xl">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-gray-300"></div>
         </div>
+        <div className="relative flex justify-center text-sm">
+          <span className="px-4 bg-gray-50 text-gray-500">Các tính năng</span>
+        </div>
+      </div>
+
+      {/* Features */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-3xl">
+        {/* Feature 1 */}
+        <div className="border border-gray-400 rounded-lg p-6 bg-white">
+          <div className="flex items-center space-x-3 mb-4">
+            <VscPreview className="text-2xl text-blue-600" />
+            <span className="text-lg font-semibold">Ôn Luyện</span>
+          </div>
+          <p className="text-gray-600 mb-4">
+            Tự trả lời các topic tự chọn. Nhận sửa lỗi và đánh giá lập tức.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a href="/practice/task1">
+              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                Task 1
+              </button>
+            </a>
+
+            <a href="/practice/task2">
+              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                Task 2
+              </button>
+            </a>
+
+            {/* <button className="bg-white border-1 border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 hover:text-white">
+              Tự thêm topic
+            </button> */}
+          </div>
+        </div>
+
+        {/* Feature 2 */}
+        <div className="border border-gray-400 rounded-lg p-6 bg-white">
+          <div className="flex items-center space-x-3 mb-4">
+            <TbWriting className="text-2xl text-blue-600" />
+            <span className="text-lg font-semibold">Thi thử</span>
+          </div>
+          <p className="text-gray-600 mb-4">
+            Trả lời một bộ câu hỏi ngẫu nhiên. Cấu trúc giống bài thi thật.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a href="/mock-test/task1">
+              <button className="border-1 border-pink-600 text-pink-600 px-4 py-2 rounded-lg hover:bg-pink-600 hover:text-white">
+                Task 1
+              </button>
+            </a>
+
+            <a href="/mock-test/task2">
+              <button className="border-1 border-pink-600 text-pink-600 px-4 py-2 rounded-lg hover:bg-pink-600 hover:text-white">
+                Task 2
+              </button>
+            </a>
+
+            <a href="/mock-test/full-test">
+              <button className="border-1 border-pink-600 text-pink-600 px-4 py-2 rounded-lg hover:bg-pink-600 hover:text-white">
+                Full test
+              </button>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </>
 );
 
 const UnauthenticatedContent = () => (
   <>
-  <div className="flex flex-col items-center justify-center min-h-screen text-center py-10 px-4">
+    <div className="flex flex-col items-center justify-center min-h-screen text-center py-10 px-4">
       <h1 className="text-4xl font-bold text-black">
         Bạch Dương không chỉ là một nền tảng AI
       </h1>

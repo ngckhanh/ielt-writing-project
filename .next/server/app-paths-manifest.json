@@ -1,5 +1,0 @@
-{
-  "/mock-test/page": "app/mock-test/page.js",
-  "/page": "app/page.js",
-  "/auth/signin/page": "app/auth/signin/page.js"
-}

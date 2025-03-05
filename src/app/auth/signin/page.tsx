@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/db";
+//import { supabase } from "@/lib/db";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 
 export default function LoginPage() {

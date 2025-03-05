@@ -22,11 +22,11 @@ export default function PracticePage() {
           </button>
           </a>
           
-          <a href="/practice/user-question">
+          {/* <a href="/practice/user-question">
           <button className="bg-white text-black px-4 py-2 rounded-lg border hover:bg-black hover:text-white transition">
             Tự thêm topic
           </button>
-          </a>
+          </a> */}
           
         </div>
   

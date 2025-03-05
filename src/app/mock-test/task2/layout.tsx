@@ -1,12 +1,10 @@
-import TestLayout from "@/components/TestLayout";
+import TestHeader from "@/components/TestHeader";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Task2Layout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
-        <body className="min-h-screen flex flex-col">
-          <TestLayout>{children}</TestLayout>
-        </body>
-      </html>
+        <>
+            <TestHeader />
+            <main className="flex-grow container mx-auto">{children}</main>
+        </>
     );
-  }
-  
+}

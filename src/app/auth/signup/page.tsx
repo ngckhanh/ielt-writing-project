@@ -1,10 +1,10 @@
 "use client";
 
 import GoogleSignInButton from "@/components/GoogleSignInButton";
-import { createClient } from "@/supabase/server";
+//import { createClient } from "@/supabase/server";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { emailLogin, signup } from "./actions";
+//import { emailLogin, signup } from "./actions";
 
 export default function RegisterPage() {
     const [email, setEmail] = useState("");

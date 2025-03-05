@@ -46,7 +46,7 @@ export default function Sidebar() {
                     <a
                         href="/practice"
                         className={`flex items-center px-4 py-3 space-x-3 rounded-lg ${
-                            pathname === "/practice" ? "bg-gray-200" : "text-black hover:bg-gray-100"
+                            pathname.startsWith("/practice") ? "bg-gray-200" : "text-black hover:bg-gray-100"
                         }`}
                     >
                         <VscPreview className="text-xl" />
@@ -55,7 +55,7 @@ export default function Sidebar() {
                     <a
                         href="/mock-test"
                         className={`flex items-center px-4 py-3 space-x-3 rounded-lg ${
-                            pathname === "/mock-test" ? "bg-gray-200" : "text-black hover:bg-gray-100"
+                            pathname.startsWith("/mock-test") ? "bg-gray-200" : "text-black hover:bg-gray-100"
                         }`}
                     >
                         <TbWriting className="text-xl" />
@@ -66,9 +66,13 @@ export default function Sidebar() {
 
             <div className="p-4">
                 {/* Upgrade Button */}
-                <button className="w-full py-3 px-4 text-blue-600 bg-white border border-blue-600 rounded-lg hover:bg-blue-600 hover:text-white">
-                    Nâng cấp tài khoản
-                </button>
+
+                <a href ="/payment">
+                    <button className="w-full py-3 px-4 text-blue-600 bg-white border border-blue-600 rounded-lg hover:bg-blue-600 hover:text-white">
+                        Nâng cấp tài khoản
+                    </button>
+                </a>
+                
 
                 {/* Account Menu */}
                 <div className="mt-6 relative">

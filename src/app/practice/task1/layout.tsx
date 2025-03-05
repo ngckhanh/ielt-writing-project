@@ -1,12 +1,10 @@
-import PracticeLayout from "@/components/PracticeLayout";
+import PracticeHeader from "@/components/PracticeHeader";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Task1Layout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
-        <body className="min-h-screen flex flex-col">
-          <PracticeLayout>{children}</PracticeLayout>
-        </body>
-      </html>
+        <>
+            <PracticeHeader />
+            <main className="flex-grow container mx-auto">{children}</main>
+        </>
     );
-  }
-  
+}
