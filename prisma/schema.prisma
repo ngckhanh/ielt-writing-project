@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  password    String
+  name        String?
+  createdAt   DateTime     @default(now())
+  role        Role
+  evaluations Evaluation[] @relation("EvaluatorEvaluations")
+  submissions Submission[]
+}
+
+model Submission {
+  id         Int              @id @default(autoincrement())
+  userId     Int
+  content    String
+  status     SubmissionStatus @default(PENDING)
+  createdAt  DateTime         @default(now())
+  evaluation Evaluation?
+  user       User             @relation(fields: [userId], references: [id])
+}
+
+model Evaluation {
+  id           Int        @id @default(autoincrement())
+  submissionId Int        @unique
+  evaluatorId  Int
+  score        Float
+  feedback     String
+  evaluatedAt  DateTime   @default(now())
+  evaluator    User       @relation("EvaluatorEvaluations", fields: [evaluatorId], references: [id])
+  submission   Submission @relation(fields: [submissionId], references: [id])
+}
+
+enum Role {
+  STUDENT
+  EVALUATOR
+}
+
+enum SubmissionStatus {
+  PENDING
+  GRADING
+  GRADED
+}

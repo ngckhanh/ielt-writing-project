@@ -3,24 +3,25 @@
 import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AuthenticateLayout from "@/components/AuthenticateLayout";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import React from "react";
 import { useSession } from 'next-auth/react';
+import Sidebar from "@/components/Sidebar";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
         <NextAuthProvider>
-          <RootContent>{children}</RootContent>
+        <SessionBasedLayout>{children}</SessionBasedLayout>
+          {/* <RootContent>{children}</RootContent> */}
         </NextAuthProvider>
       </body>
     </html>
   );
 }
 
-const RootContent = ({ children }: { children: React.ReactNode }) => {
+const SessionBasedLayout = ({ children }: { children: React.ReactNode }) => {
   const { status } = useSession();
 
   if (status === "loading") {
@@ -29,13 +30,24 @@ const RootContent = ({ children }: { children: React.ReactNode }) => {
 
   return status === "authenticated" ? (
     // Layout for authenticated users
-    <AuthenticateLayout>{children}</AuthenticateLayout>
+    <AuthenticatedLayout>{children}</AuthenticatedLayout>
   ) : (
     // Default layout for unauthenticated users
-    <>
-      <Header />
-      <main className="flex-grow container mx-auto">{children}</main>
-      <Footer />
-    </>
+    <UnauthenticatedLayout>{children}</UnauthenticatedLayout>
   );
 };
+
+const AuthenticatedLayout = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex h-screen">
+    <Sidebar />
+    <main className="flex-grow p-6 overflow-auto">{children}</main>
+  </div>
+);
+
+const UnauthenticatedLayout = ({ children }: { children: React.ReactNode }) => (
+  <>
+    <Header />
+    <main className="flex-grow container mx-auto">{children}</main>
+    <Footer />
+  </>
+);

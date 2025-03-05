@@ -24,6 +24,7 @@
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["app/styles/*"],
       "@/providers/*": ["app/providers/*"],
+      "@/supabase/*": ["utils/supabase/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
