@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  email       String    @unique
+  password    String    // Use hashed passwords
+  name        String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  writings    Writing[]
+  mockTests   MockTest[]
+  practice   Practice[]
+}
+
+model Writing {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  topic       String
+  response    String    // User's written response
+  score       Float?    // Score for the writing
+  feedback    String?   // Feedback from the system or reviewer
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id])
+}
+
+model Practice {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  taskType    String    // "Task 1" or "Task 2"
+  input       String    // User's response
+  score       Float?    // Scored out of 9.0
+  feedback    String?   // Feedback provided
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id])
+}
+
+model MockTest {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  task1Input  String?   // Response to Task 1
+  task2Input  String?   // Response to Task 2
+  task1Score  Float?    // Score for Task 1
+  task2Score  Float?    // Score for Task 2
+  feedback    String?   // Overall feedback
+  createdAt   DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id])
+}
+

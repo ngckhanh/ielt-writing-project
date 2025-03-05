@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/db";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 
 export default function LoginPage() {
@@ -81,6 +82,7 @@ export default function LoginPage() {
                         onChange={handleEmailChange}
                         className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter your email"
+                        required
                     />
                     <label htmlFor="password" className="block mt-4 text-sm font-medium text-gray-700">
                         Password
@@ -92,6 +94,7 @@ export default function LoginPage() {
                         onChange={handlePasswordChange}
                         className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter your password"
+                        required
                     />
                 </div>
 

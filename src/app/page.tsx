@@ -1,5 +1,3 @@
-import ClientComponent from "@/components/ClientComponent";
-import SignoutButton from "@/components/SignoutButton";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { TbWriting } from "react-icons/tb";

@@ -2,7 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
-import { db } from "./db"; // Assuming you have a configured database client (e.g., Prisma or Supabase)
+import { db } from "@/lib/db"; // Assuming you have a configured database client (e.g., Supabase)
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,

@@ -1,8 +1,10 @@
 "use client";
 
 import GoogleSignInButton from "@/components/GoogleSignInButton";
+import { createClient } from "@/supabase/server";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { emailLogin, signup } from "./actions";
 
 export default function RegisterPage() {
     const [email, setEmail] = useState("");
@@ -76,6 +78,7 @@ export default function RegisterPage() {
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter your email"
+                        required
                     />
                     <label htmlFor="password" className="block mt-4 text-sm font-medium text-gray-700">
                         Password
@@ -87,6 +90,7 @@ export default function RegisterPage() {
                         onChange={(e) => handleInputChange("password", e.target.value)}
                         className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter your password (min 8 characters)"
+                        required
                     />
                 </div>
 
