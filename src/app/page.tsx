@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { TbWriting } from "react-icons/tb";
